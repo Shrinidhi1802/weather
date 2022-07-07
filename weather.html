@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input placeholder="enter" id="city">
+    <button type="submit"onclick="fetch_data()"> Get Data</button>
+    <div id="result"></div>
+
+    <script>
+        function fetch_data(){
+            var cityName=document.getElementById('city').value;
+            var url='https://api.openweathermap.org/data/2.5/weather?q='+cityName+'&appid=797740c478ebbba0647b26f36b35bdbc'
+        
+            
+            console.log(url);
+            fetch(url).then(function(response) {
+            return response.json();
+            }).then(function(data) {
+            console.log(data.main.temp);
+            document.getElementById('result').innerHTML = data.main.temp;
+            }).catch(function() {
+            console.log("Booo");
+            });}
+    </script>
+</body>
+</html>
